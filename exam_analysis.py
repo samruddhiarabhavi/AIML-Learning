@@ -1,5 +1,6 @@
 import pandas as pd
 df = pd.read_csv("exam_scores.csv")
+df["city"] = df["city"].str.replace("Mumbais", "Mumbai")
 print("Average score overall:", df["score"].mean())
 print("Average score in Math:", df[df["subject"] == "Math"]["score"].mean())
 print("Students per city:\n", df["city"].value_counts())
