@@ -1,8 +1,11 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 df = pd.read_csv("exam_scores.csv")
-df["city"] = df["city"].str.replace("Mumbais", "Mumbai")
-print("Average score overall:", df["score"].mean())
-print("Average score in Math:", df[df["subject"] == "Math"]["score"].mean())
-print("Students per city:\n", df["city"].value_counts())
-print("Average score per subject:\n", df.groupby("subject")["score"].mean())
-print("Students scoring above 80:", len(df[df["score"] > 80]))
+
+subject_avg = df.groupby("subject")["score"].mean()
+sns.barplot(x=subject_avg.index, y=subject_avg.values)
+plt.title("average score per subject")
+plt.xlabel("subject")
+plt.ylabel("Average score")
+plt.show()
