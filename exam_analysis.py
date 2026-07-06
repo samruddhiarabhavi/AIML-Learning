@@ -1,11 +1,12 @@
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+from sklearn.linear_model import LinearRegression
+
 df = pd.read_csv("exam_scores.csv")
 
-subject_avg = df.groupby("subject")["score"].mean()
-sns.barplot(x=subject_avg.index, y=subject_avg.values)
-plt.title("average score per subject")
-plt.xlabel("subject")
-plt.ylabel("Average score")
-plt.show()
+X = df[["hours_studied"]]   
+y = df["score"]
+model = LinearRegression()
+model.fit(X, y)
+
+predicted = model.predict([[6]])
+print("Predicted score for 6 hours studied:", predicted)
