@@ -1,22 +1,20 @@
-# Titanic Survival Prediction
+# AIML Learning Journey
 
-A machine learning project predicting passenger survival on the Titanic using Logistic Regression.
+This repository documents my hands-on journey learning AI/ML engineering — from Python fundamentals through data analysis, classical machine learning, and (soon) deep learning.
 
-## Overview
-- Cleaned real-world data with missing values (Age, Cabin, Embarked)
-- Encoded categorical features (Sex, Embarked) 
-- Trained a Logistic Regression classifier
-- Achieved 81% accuracy on held-out test data
+## Projects
 
-## Tech stack
-Python, pandas, scikit-learn
+### 🚢 [Titanic Survival Prediction](./titanic-survival-prediction)
+Predicting passenger survival using Logistic Regression — full cycle: data cleaning, handling missing values, categorical encoding, train/test split, and evaluation. 81% accuracy.
 
-## Steps
-1. Data exploration (.info(), .describe(), missing value analysis)
-2. Data cleaning (dropped high-missing columns, filled Age/Embarked)
-3. Feature encoding (label encoding for Sex, one-hot encoding for Embarked)
-4. Train/test split (80/20)
-5. Model training & evaluation (Logistic Regression, accuracy score)
+### 📊 [Exam Score Analysis](./exam-score-analysis)
+Exploratory data analysis and visualization (pandas, matplotlib, seaborn) — plus regression/classification experiments (predicting scores and pass/fail from hours studied).
 
-## Results
-81% accuracy on test set
+### 🐍 [Pandas Basics](./pandas-basics)
+Early practice with pandas fundamentals — reading CSVs, filtering, grouping, and basic stats.
+
+## Tech Stack
+Python, pandas, NumPy, matplotlib, seaborn, scikit-learn
+
+## About
+Currently following a structured 12-15 month roadmap: Python foundations → data analysis → classical ML → deep learning → specialization (NLP/LLMs) → job-ready portfolio.
