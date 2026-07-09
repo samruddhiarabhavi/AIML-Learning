@@ -1,18 +1,27 @@
+import torch
+import torch.nn as nn
 import pandas as pd
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_absolute_error
-from sklearn.metrics import accuracy_score
-df = pd.read_csv("exam_scores.csv")
-df["pass"] = df["score"] >= 70
 
-X = df[["hours_studied", "age"]]   
-y = df["pass"]
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-model = LogisticRegression()
-model.fit(X_train, y_train)
-predictions = model.predict(X_test)
-acc = accuracy_score(y_test, predictions)
-print("Accuracy:", acc)
-print("Actual:", y_test.values)
-print("Predicted:", predictions)
+df = pd.read_csv("exam_scores.csv")
+df["pass"] = (df["score"] >= 70).astype(int)
+
+X = torch.tensor(df[["hours_studied"]].values, dtype=torch.float32)
+y = torch.tensor(df["pass"].values, dtype=torch.float32).reshape(-1, 1)
+
+class SimpleNet(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.layer1 = nn.Linear(1, 4)
+        self.activation = nn.ReLU()
+        self.layer2 = nn.Linear(4, 1)
+        self.output_activation = nn.Sigmoid()
+
+    def forward(self, x):
+        x = self.layer1(x)
+        x = self.activation(x)
+        x = self.layer2(x)
+        x = self.output_activation(x)
+        return x
+
+model = SimpleNet()
+print(model)
