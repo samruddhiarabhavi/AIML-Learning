@@ -25,3 +25,14 @@ class SimpleNet(nn.Module):
 
 model = SimpleNet()
 print(model)
+criterion = nn.BCELoss()
+optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
+epochs = 1000
+for epoch in range(epochs):
+    predictions = model(X)
+    loss = criterion(predictions, y)
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+    if epoch % 100 == 0:
+        print(f"Epoch {epoch}, Loss: {loss.item():.4f}")
