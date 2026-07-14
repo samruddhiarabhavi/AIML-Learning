@@ -33,8 +33,25 @@ class CNN(nn.Module):
         x = self.relu(self.fc1(x))
         x = self.fc2(x)
         return x
-Model = CNN()
-print(Model)
+model = CNN()
+print(model)
+criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+
+epochs = 3
+for epoch in range(epochs):
+    total_loss = 0
+    for images, labels in train_loader:
+        predictions = model(images)
+        loss = criterion(predictions, labels)
+
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+
+        total_loss += loss.item()
+
+    print(f"Epoch {epoch+1}, Loss: {total_loss / len(train_loader):.4f}")
 
 
 
