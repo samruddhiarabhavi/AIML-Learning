@@ -8,7 +8,7 @@ transform = transforms.Compose([
     transforms.ToTensor()
 ])
 
-dataset = datasets.ImageFolder(root=r"C:\Users\HP\aimllearn\training_data", transform=transform)
+dataset = datasets.ImageFolder(root=r"C:\Users\HP\aimllearn\cat-dog-classification\training_data", transform=transform)
 train_size = int(0.8 * len(dataset))
 test_size = len(dataset) - train_size
 train_data, test_data = random_split(dataset, [train_size, test_size])

@@ -8,7 +8,7 @@ transform = transforms.Compose([
     transforms.ToTensor()
 ])
 
-dataset = datasets.ImageFolder(root=r"C:\Users\HP\aimllearn\training_data", transform=transform)
+dataset = datasets.ImageFolder(root=r"C:\Users\HP\aimllearn\cat-dog-classification\training_data", transform=transform)
 
 print("Total images:", len(dataset))
 print("Classes:", dataset.classes)
