@@ -47,3 +47,14 @@ class CatDogCNN(nn.Module):
 
 model = CatDogCNN()
 print(model)
+correct = 0
+total = 0
+with torch.no_grad():
+    for image, labels in test_loader:
+        output = model(image)
+        _, predicted = torch.max(output, 1)
+        total += labels.size(0)
+        correct += (predicted == labels).sum().item()
+
+accuracy = correct / total
+print(f"Test Accuracy: {accuracy * 100:.2f}%")
